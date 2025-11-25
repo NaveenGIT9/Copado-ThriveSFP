@@ -2,6 +2,16 @@
  * @description Utility class to handle the creation and insertion of Account records.
  */
 public with sharing class AccountCreator {
+    // --- New Method Added at the START ---
+    /**
+     * @description Counts the total number of Account records currently in the organization.
+     * @return The count of all Account records.
+     */
+    public static Integer countExistingAccounts() {
+        // Query to count all Accounts. Using COUNT() for efficiency.
+        return [SELECT COUNT() FROM Account];
+    }
+    // ------------------------------------
 
     /**
      * @description Creates and inserts Account records based on a list of names.
@@ -44,6 +54,8 @@ public with sharing class AccountCreator {
 
         return accountsToInsert;
     }
+    // --- New Method Added in the MIDDLE ---
+    /**
     
     // Custom exception class for better error handling visibility.
     public class AccountCreationException extends Exception {}
